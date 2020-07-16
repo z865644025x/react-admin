@@ -16,8 +16,8 @@ export const TodoListForRedux = () => {
       <div style={{ width: 220 }}>
         <h3>Dolphins</h3>
         <h1>{dolphins}</h1>
-        <Button onClick={() => IDolphins.increment}>+1</Button>
-        <Button onClick={() => IDolphins.incrementAsync}>Async +1</Button>
+        <Button onClick={() => IDolphins.increment(1)}>+1</Button>
+        <Button onClick={() => IDolphins.incrementAsync(1)}>Async +1</Button>
       </div>
       <div style={{ width: 300 }}>
         <h3>Sharks</h3>
