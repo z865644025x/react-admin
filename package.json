@@ -51,6 +51,8 @@
     "@rematch/core": "^1.4.0",
     "@types/react-redux": "^7.1.9",
     "dva": "^2.4.1",
+    "react-app-rewire-less-modules": "^1.3.0",
+    "react-keep-alive": "^2.5.2",
     "redux": "^4.0.5"
   }
 }

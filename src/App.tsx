@@ -1,10 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+// 页面不刷新 - 可引用的库
+import { Provider, KeepAlive } from "react-keep-alive";
 import { routerConfig } from "./config/routerConfig";
+import Item from 'antd/lib/list/Item';
 
 interface RouteInterFace {
   path: string,
-  component: any
+  component: any,
+  name: string
 }
 
 /**
@@ -12,27 +16,41 @@ interface RouteInterFace {
  * @param router 路由component
  * @param index routerConfig的index
  */
-const PrivateRouter = (router: RouteInterFace, index: number) => {
-  return (
-    <Route
-      key={index}
-      path={router.path}
-      exact
-      render={props => <router.component {...props} />}
-    />
-  )
+const PrivateRouter = (router: RouteInterFace) => {
+  if (router.name === 'routerdemo') {
+    return (
+      <Route
+        key={router.name}
+        path={router.path}
+        exact
+        render={props => <KeepAlive name={router.name}><router.component {...props} /></KeepAlive>}
+      />
+    )
+  } else {
+    return (
+      <Route
+        key={router.name}
+        path={router.path}
+        exact
+        render={props => <router.component {...props} />}
+      />
+    )
+  }
+
 }
 
 const App: React.FunctionComponent = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        {
-          routerConfig.map((item: RouteInterFace, index: number) => {
-            return PrivateRouter(item, index)
-          })
-        }
-      </Switch>
+      <Provider>
+        <Switch>
+          {
+            routerConfig.map((item: RouteInterFace) => {
+              return PrivateRouter(item)
+            })
+          }
+        </Switch>
+      </Provider>
     </BrowserRouter>
   )
 }

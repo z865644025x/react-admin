@@ -1,23 +1,27 @@
 import Demo from "../pages/demo";
 import { Home } from "../pages/home";
-import {TodoListForRedux} from "../pages/redux";
-import {RouterDemo} from "../pages/router";
+import { TodoListForRedux } from "../pages/redux";
+import { RouterDemo } from "../pages/router";
 
 export const routerConfig = [
   {
     path: "/",
-    component: Home
+    component: Home,
+    name: 'home'
   },
   {
     path: "/demo",
-    component: Demo
+    component: Demo,
+    name: 'demo'
   },
   {
     path: "/todolist",
-    component: TodoListForRedux
-	},
-	{
+    component: TodoListForRedux,
+    name: 'todolist'
+  },
+  {
     path: "/routerdemo",
-    component: RouterDemo
+    component: RouterDemo,
+    name: 'routerdemo'
   }
 ]
