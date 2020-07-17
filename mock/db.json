@@ -1,0 +1,17 @@
+{
+  "data": {
+    "id": "001",
+    "name": "Sherry",
+    "age": 24,
+    "friends": [
+      {
+        "id": "100",
+        "name": "friend1"
+      },
+      {
+        "id": "200",
+        "name": "friend2"
+      }
+    ]
+  }
+}

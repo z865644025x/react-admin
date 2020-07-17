@@ -1,13 +1,9 @@
-import React, { useState, useRef } from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useEffect } from "react";
 import {
   List,
   Avatar,
-  Button,
   Typography,
-  Form,
-  Input,
-  Select,
-  DatePicker,
   Menu,
   Dropdown,
   Tabs,
@@ -18,7 +14,6 @@ import "./index.css";
 import logo from "../../logo.svg";
 
 const { Title } = Typography;
-const { Option } = Select;
 const { TabPane } = Tabs;
 
 const todoListData = [
@@ -54,34 +49,6 @@ const todoListData = [
   },
 ];
 
-const userList = [
-  {
-    id: "666666666",
-    name: "图雀社区",
-    avatar: "https://avatars0.githubusercontent.com/u/39240800?s=60&v=4",
-  },
-  {
-    id: "23410977",
-    name: "mRcfps",
-    avatar: "https://avatars0.githubusercontent.com/u/23410977?s=96&v=4",
-  },
-  {
-    id: "25455350",
-    name: "crxk",
-    avatar: "https://avatars1.githubusercontent.com/u/25455350?s=96&v=4",
-  },
-  {
-    id: "23410977",
-    name: "pftom",
-    avatar: "https://avatars0.githubusercontent.com/u/23410977?s=96&v=4",
-  },
-  {
-    id: "58352313",
-    name: "holy",
-    avatar: "https://avatars0.githubusercontent.com/u/58352313?s=96&v=4",
-  },
-];
-
 const menu = (
   <Menu>
     <Menu.Item>完成 </Menu.Item>
@@ -89,27 +56,7 @@ const menu = (
   </Menu>
 );
 
-const TodoInput = ({ value = {} }) => {
-  return (
-    <div className="todoInput" >
-      <Input type="text" placeholder="输入待办事项内容" />
-      <Select style={{ width: 80 }} size="small" defaultValue="666666666" >
-        {
-          userList.map((user) => (
-            <Option value={user.id} > {user.name} </Option>
-          ))
-        }
-      </Select>
-      < DatePicker
-        size="small"
-        style={{ marginLeft: "16px", marginRight: "16px" }
-        }
-      />
-    </div>
-  );
-};
-
-function TodoList() {
+const TodoList: React.FC = () => {
   return (
     <List
       className="demo-loadmore-list"
@@ -142,24 +89,16 @@ function TodoList() {
   );
 }
 
-function Demo() {
+const Demo: React.FC = () => {
   const callback = () => { };
 
-  const onFinish = () => { };
-  const ref = useRef(null);
-
   return (
-    <div className="App" ref={ref} >
+    <div className="App">
       <div className="container header" >
         <img src={logo} alt="" style={{ width: 80 }} />
         <Title level={3} > TS + React全家桶 + antd 项目搭建 </Title>
       </div>
       <div className="container" >
-        <Form onFinish={onFinish}>
-          <Form.Item name="todo" >
-            <TodoInput />
-          </Form.Item>
-        </Form>
       </div>
       <div className="container" >
         <Tabs onChange={callback} type="card" >

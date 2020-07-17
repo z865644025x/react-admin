@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // 页面不刷新 - 可引用的库
 import { Provider, KeepAlive } from "react-keep-alive";
 import { routerConfig } from "./config/routerConfig";
-import Item from 'antd/lib/list/Item';
 
 interface RouteInterFace {
   path: string,
@@ -36,7 +35,6 @@ const PrivateRouter = (router: RouteInterFace) => {
       />
     )
   }
-
 }
 
 const App: React.FunctionComponent = () => {
