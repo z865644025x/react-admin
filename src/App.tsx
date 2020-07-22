@@ -3,6 +3,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // 页面不刷新 - 可引用的库
 import { Provider, KeepAlive } from "react-keep-alive";
 import { routerConfig } from "./config/routerConfig";
+import { Layout,Button } from 'antd';
+import { Menubox } from "./components/Menubox"
+import { Headerbox } from "./components/Header"
+
+const { Header, Footer, Sider, Content } = Layout;
 
 interface RouteInterFace {
   path: string,
@@ -43,9 +48,26 @@ const App: React.FunctionComponent = () => {
       <Provider>
         <Switch>
           {
-            routerConfig.map((item: RouteInterFace) => {
-              return PrivateRouter(item)
-            })
+            !window.location.pathname.includes('auth') ? 
+            <Layout style={{ height: "100vh" }}>
+              <Sider>
+                <Menubox />
+              </Sider>
+              <Layout> 
+                <Headerbox />
+                <Content style={{padding:20}}>
+                  {
+                    routerConfig.map((item: RouteInterFace) => {
+                      return PrivateRouter(item)
+                    })
+                  } 
+                </Content>
+                <Footer style={{textAlign:"center"}}>Made with Wang</Footer>
+              </Layout>
+            </Layout> : 
+            <Route path="/auth">
+              <Button onClick={() => window.location.href="/"}>登录</Button>
+            </Route>
           }
         </Switch>
       </Provider>
