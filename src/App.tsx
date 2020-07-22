@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch,Redirect } from "react-router-dom";
 // 页面不刷新 - 可引用的库
 import { Provider, KeepAlive } from "react-keep-alive";
 import { routerConfig } from "./config/routerConfig";
@@ -12,7 +12,9 @@ const { Header, Footer, Sider, Content } = Layout;
 interface RouteInterFace {
   path: string,
   component: any,
-  name: string
+  name: string,
+  children?: any,
+  redirect?:any
 }
 
 /**
@@ -21,25 +23,53 @@ interface RouteInterFace {
  * @param index routerConfig的index
  */
 const PrivateRouter = (router: RouteInterFace) => {
-  if (router.name === 'routerdemo') {
-    return (
-      <Route
-        key={router.name}
-        path={router.path}
-        exact
-        render={props => <KeepAlive name={router.name}><router.component {...props} /></KeepAlive>}
-      />
-    )
-  } else {
-    return (
-      <Route
-        key={router.name}
-        path={router.path}
-        exact
-        render={props => <router.component {...props} />}
-      />
-    )
+  if(router.children){
+    console.log(router);
+    return <Switch  key={router.name}>
+    <Redirect exact from={router.path} to={router.redirect} />
+    <Route key={router.path} path={router.path}>
+      <router.component>
+        {
+          router.children.map((item:RouteInterFace)=>{
+            return PrivateRouter(item)
+          })
+        }
+      </router.component>
+    </Route>
+  </Switch> 
   }
+  else{
+    return <Route
+      key={router.name}
+      path={router.path}
+      exact
+      component={router.component}
+      // render={props => <router.component {...props} />}
+    />
+  }
+  
+  
+  
+  // 渲染不刷新的页面
+  // if (router.name === 'routerdemo') {
+  //   return (
+  //     <Route
+  //       key={router.name}
+  //       path={router.path}
+  //       exact
+  //       render={props => <KeepAlive name={router.name}><router.component {...props} /></KeepAlive>}
+  //     />
+  //   )
+  // } else {
+  //   return (
+  //     <Route
+  //       key={router.name}
+  //       path={router.path}
+  //       exact
+  //       render={props => <router.component {...props} />}
+  //     />
+  //   )
+  // }
 }
 
 const App: React.FunctionComponent = () => {
@@ -60,7 +90,7 @@ const App: React.FunctionComponent = () => {
                     routerConfig.map((item: RouteInterFace) => {
                       return PrivateRouter(item)
                     })
-                  } 
+                  }
                 </Content>
                 <Footer style={{textAlign:"center"}}>Made with Wang</Footer>
               </Layout>

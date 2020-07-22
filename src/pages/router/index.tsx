@@ -3,7 +3,8 @@ import React from 'react';
 // import "./index.less"
 import styles from "./index.module.less";
 
-export const RouterDemo: React.FC = () => {
+export const RouterDemo: React.FC = (props) => {
+  console.log(props);
   // const history = useHistory();
   // console.log(history);
   // let arr: any = history.location.state;
@@ -11,6 +12,10 @@ export const RouterDemo: React.FC = () => {
     <div className={styles.nameColor}>
       {/* <span className="nameColor">{arr.name}</span> */}
       {/* <span>{arr.name}</span> */}
+      routerDom
+      {
+
+      }
     </div>
   )
 }

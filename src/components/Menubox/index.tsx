@@ -16,7 +16,7 @@ const handleColickMenu = (item: any) => {
   console.log(item);
 }
 
-const showMenuItem = (router?: Array<routeType>) => {
+const showMenuItem = (router?: any) => {
   return router?.map((item: routeType, index: number) => {
     if (item.children) {
       return <SubMenu key={item.name} title={item.name}>

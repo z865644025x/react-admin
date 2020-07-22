@@ -22,8 +22,16 @@ export const routerConfig = [
   },
   {
     path: "/routerdemo",
+    redirect:'/routerdemo',
     component: RouterDemo,
-    name: 'routerdemo'
+    name: 'routerdemo',
+    children:[
+      {
+        path: "/children",
+        component: TodoListForRedux,
+        name: 'children'
+      }
+    ]
   },
   {
     path: "/table",
