@@ -26,7 +26,7 @@ export const Headerbox: React.FC = () => {
     <Header className={styles.headerStyle}>
       <div className={styles.logo} />
       <Dropdown overlay={menu} placement="bottomCenter">
-        <div>
+        <div className={styles.dropdownBox}>
           <UserOutlined style={{marginRight:8}} />
           <span>Wang Pei</span>
         </div>

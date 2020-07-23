@@ -2,6 +2,7 @@ import Demo from "../pages/demo";
 import { Home } from "../pages/home";
 import { TodoListForRedux } from "../pages/redux";
 import { RouterDemo } from "../pages/router";
+import { Children } from "../pages/router/children";
 import { TableBox } from "../pages/table";
 
 export const routerConfig = [
@@ -22,13 +23,13 @@ export const routerConfig = [
   },
   {
     path: "/routerdemo",
-    redirect:'/routerdemo',
+    redirect:'/routerdemo/children',
     component: RouterDemo,
     name: 'routerdemo',
     children:[
       {
-        path: "/children",
-        component: TodoListForRedux,
+        path: "/routerdemo/children",
+        component: Children,
         name: 'children'
       }
     ]

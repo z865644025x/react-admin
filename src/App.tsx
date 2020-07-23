@@ -24,7 +24,7 @@ interface RouteInterFace {
  */
 const PrivateRouter = (router: RouteInterFace) => {
   if(router.children){
-    console.log(router);
+    console.log(router)
     return <Switch  key={router.name}>
     <Redirect exact from={router.path} to={router.redirect} />
     <Route key={router.path} path={router.path}>

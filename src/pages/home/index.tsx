@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const Home: React.FC = (props) => {
-  console.log(props)
+export const Home: React.FC = () => {
   return (
     <div>Home</div>
   )
