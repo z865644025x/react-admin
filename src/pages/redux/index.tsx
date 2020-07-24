@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { iRootState, Dispatch } from '../../store'
 import { Button } from 'antd'
 
-export const TodoListForRedux = () => {
+export const TodoListForRedux: React.FC = () => {
   const dolphins = useSelector((state: iRootState) => state.dolphins)
   const sharks = useSelector((state: iRootState) => state.sharks)
   const dispatch = useDispatch<Dispatch>()
