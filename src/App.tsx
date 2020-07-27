@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Switch,Redirect } from "react-router-dom";
 // 页面不刷新 - 可引用的库
 // import { Provider, KeepAlive } from "react-keep-alive";
 import { routerConfig } from "./config/routerConfig";
-import { Layout,Button } from 'antd';
+import { Layout } from 'antd';
 import { Menubox } from "./components/Menubox"
 import { Headerbox } from "./components/Header"
+import { Login } from "./components/Login"
 
 const { Footer, Sider, Content } = Layout;
 
@@ -95,7 +96,7 @@ const App: React.FunctionComponent = () => {
               </Layout>
             </Layout> : 
             <Route path="/auth">
-              <Button onClick={() => window.location.href="/"}>登录</Button>
+              <Login />
             </Route>
           }
         </Switch>
