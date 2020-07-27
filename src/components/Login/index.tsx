@@ -31,8 +31,8 @@ export const Login:React.FC = () => {
         message.error('登陆失败！请尝试输入账户："admin",密码："admin"!')
         return 
       }
+      history.push('/');
       message.success("登陆成功!");
-      window.location.href = '/'
     },500);
   }
 

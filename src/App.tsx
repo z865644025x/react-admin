@@ -1,14 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch,Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 // 页面不刷新 - 可引用的库
 // import { Provider, KeepAlive } from "react-keep-alive";
 import { routerConfig } from "./config/routerConfig";
-import { Layout } from 'antd';
-import { Menubox } from "./components/Menubox"
-import { Headerbox } from "./components/Header"
-import { Login } from "./components/Login"
+import { LayoutBox } from "./components/Layout";
 
-const { Footer, Sider, Content } = Layout;
+import { Login } from "./components/Login"
 
 interface RouteInterFace {
   path: string,
@@ -26,7 +23,6 @@ interface RouteInterFace {
 const PrivateRouter = (router: RouteInterFace) => {
   if(router.children){
     return <Switch  key={router.name}>
-    <Redirect exact from={router.path} to={router.redirect} />
     <Route key={router.path} path={router.path}>
       <router.component>
         {
@@ -43,8 +39,7 @@ const PrivateRouter = (router: RouteInterFace) => {
       key={router.name}
       path={router.path}
       exact
-      component={router.component}
-      // render={props => <router.component {...props} />}
+      render={props => <router.component {...props} />}
     />
   }
   
@@ -75,32 +70,18 @@ const PrivateRouter = (router: RouteInterFace) => {
 const App: React.FunctionComponent = () => {
   return (
     <BrowserRouter>
-      {/* <Provider> */}
-        <Switch>
+      <Switch>
+        <LayoutBox>
+          <Route path="/auth" exact key="auth">
+            <Login />
+          </Route>
           {
-            !window.location.pathname.includes('auth') ? 
-            <Layout style={{ height: "100vh" }}>
-              <Sider>
-                <Menubox />
-              </Sider>
-              <Layout> 
-                <Headerbox />
-                <Content style={{padding:20}}>
-                  {
-                    routerConfig.map((item: RouteInterFace) => {
-                      return PrivateRouter(item)
-                    })
-                  }
-                </Content>
-                <Footer style={{textAlign:"center"}}>Made with Wang</Footer>
-              </Layout>
-            </Layout> : 
-            <Route path="/auth">
-              <Login />
-            </Route>
+            routerConfig.map((item: RouteInterFace) => {
+              return PrivateRouter(item)
+            })
           }
-        </Switch>
-      {/* </Provider> */}
+        </LayoutBox>
+      </Switch>
     </BrowserRouter>
   )
 }
