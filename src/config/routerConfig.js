@@ -9,7 +9,7 @@ export const routerConfig = [
   {
     path: "/",
     component: Home,
-    name: 'home'
+    name: '首页'
   },
   {
     path: "/demo",
