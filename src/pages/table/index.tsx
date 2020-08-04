@@ -1,7 +1,12 @@
 import React from 'react';
 import { Table } from "antd";
+import { useMount } from "@umijs/hooks";
 
 export const TableBox: React.FC = () => {
+
+  useMount(()=>{ //添加umijs/hooks 使用部分简便的hooks
+    console.log("This is mount if this is first");
+  })
 
   interface User {
     key: number;
