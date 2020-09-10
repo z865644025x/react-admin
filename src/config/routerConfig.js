@@ -4,6 +4,7 @@ import { TodoListForRedux } from "../pages/redux";
 import { RouterDemo } from "../pages/router";
 import { Children } from "../pages/router/children";
 import { TableBox } from "../pages/table";
+import { FormBox } from "../pages/form";
 
 export const routerConfig = [
   {
@@ -38,5 +39,10 @@ export const routerConfig = [
     path: "/table",
     component: TableBox,
     name: 'tablebox'
+  },
+  {
+    path: "/form",
+    component: FormBox,
+    name: 'formBox'
   }
 ]
