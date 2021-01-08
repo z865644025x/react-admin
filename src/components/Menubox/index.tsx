@@ -7,6 +7,7 @@ import { routerConfig } from "../../config/routerConfig";
 
 const { SubMenu } = Menu;
 
+// 接口注释
 interface routeType {
   path: string,
   component: any,
