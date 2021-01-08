@@ -11,7 +11,8 @@ interface routeType {
   path: string,
   component: any,
   name: string,
-  children?: []
+  children?: [],
+  icon:React.Component
 }
 
 export const Menubox: React.FC = () => {
@@ -32,7 +33,7 @@ export const Menubox: React.FC = () => {
         </SubMenu>
       } else {
         return <Menu.Item key={item.name} onClick={handleColickMenu}>
-          <Link to={item.path}>{item.name}</Link>
+          {item.icon ? item.icon : ""}<Link to={item.path}>{item.name}</Link>
         </Menu.Item>
       }
     })

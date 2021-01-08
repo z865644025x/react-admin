@@ -1,3 +1,4 @@
+import React from 'react';
 import Demo from "../pages/demo";
 import { Home } from "../pages/home";
 import { TodoListForRedux } from "../pages/redux";
@@ -5,6 +6,7 @@ import { RouterDemo } from "../pages/router";
 import { Children } from "../pages/router/children";
 import { TableBox } from "../pages/table";
 import { FormBox } from "../pages/form";
+import { DeleteOutlined } from "@ant-design/icons"
 
 export const routerConfig = [
   {
@@ -43,6 +45,7 @@ export const routerConfig = [
   {
     path: "/form",
     component: FormBox,
-    name: 'formBox'
+    name: 'formBox',
+    icon: <DeleteOutlined />
   }
 ]
